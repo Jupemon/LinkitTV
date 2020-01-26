@@ -35,19 +35,23 @@ class CreateSession extends Component {
     sendRequest = () => {
         const name = document.querySelector('input').value
         if (name.length > 0) {
-            fetch(`/createsession/${name}`).then(d => {
+
+            fetch('/createsession', {
+                method:"POST",
+                headers : {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name : name
+                })
+            }).then(d => {
                 if (d.status === 200) {
                     d.json()
+                    this.props.sessionCreated(name)
                 }
-                else if (d.status === 400) {
-                    this.setState({errorMessage: "Session with that name already exists"})
-                    throw "session with that name doesnt exist"
+                else {
+                    this.setState({errorMessage : "Session name is already taken"})
                 }
-            } ).then(data => {
-                console.log("data gotten here it is :", data)
-                this.props.sessionCreated(name)
-            }).catch(er => {
-                console.log("something went wrong creating session")
             })
         }
         else {

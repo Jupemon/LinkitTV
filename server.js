@@ -13,30 +13,24 @@ const jsonParser = bodyParser.json()//
 const port = parseInt(process.env.PORT, 10) || 3000//
 
 
-nextApp.prepare().then(() => {
+let activeSessions = [
+  {
+    name : "Jupemon",
+    password : "secret",
+    id : null
+  }
+];
 
-  let activeSessions = [
-    {
-      name : "Jupemon",
-      password : "secret",
-      id : null
-    }
-  ];
-  
 
-const frontendTestFunction = (sec) => { // emits messages every SEC to users, used for testing the application
-
-}
-
-app.get('/createsession/:name', (req, res) => { // creates a new session
-
-  let session = activeSessions.find(o => o.name.toLowerCase() === req.params.name.toLowerCase()); // searches for active session with that name
+app.post('/createsession', jsonParser, (req, res) => { // creates a new session
+  const { name } = req.body;
+  let session = activeSessions.find(o => o.name.toLowerCase() === name.toLowerCase()); // searches for active session with that name
 
   if (session === undefined || session === null) { // creates a new session
     console.log("session created")
     //createSocket(req.params.name);
     activeSessions.push({
-      name : req.params.name,
+      name : name.toLowerCase(),
       password : "secret",
       suggestedvideos : []
     })
@@ -74,6 +68,17 @@ app.get('/createsession/:name', (req, res) => { // creates a new session
     }
   })
 
+  io.on('connect', socket => {
+    console.log("user has connected to")
+    socket.on('disconnect', () => {
+      console.log("user has disconnceted")
+    })
+  })
+
+nextApp.prepare().then(() => {
+
+
+  
   app.get('*', (req, res) => {
     return nextHandler(req, res);
   })
@@ -85,9 +90,7 @@ app.get('/createsession/:name', (req, res) => { // creates a new session
 })
 
 
-io.on('connect', socket => {
-  console.log("user has connected to")
-})
+
 
 /*    io.on('connect', socket  => { // emit to the user that is selected
       socket.on('disconnect', function(){

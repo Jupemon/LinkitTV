@@ -1,0 +1,1 @@
+export default [] // contains all the active sessions
