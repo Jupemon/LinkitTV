@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import io from 'socket.io-client'
-import changingvariable from '../changingvariable';
 import VideoQueue from './VideoQueue';
 import YouTubeVideo from './Youtube';
 import PlaceHolder from './Placeholder';
@@ -31,7 +30,6 @@ class Session extends Component {
         } )*/
     }
     render() { 
-        console.log(changingvariable)
         return ( <div>
         <TopNav />
         <YouTubeVideo sessionName={this.props.sessionName} id={"B1lNhNHdoPI"}/>
