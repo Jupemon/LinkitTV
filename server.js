@@ -5,6 +5,7 @@ const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
+nextApp.getRequestHandler()
 const nextHandler = nextApp.getRequestHandler();
 
 const bodyParser = require('body-parser')
@@ -12,14 +13,8 @@ const jsonParser = bodyParser.json()//
 
 const port = parseInt(process.env.PORT, 10) || 3000//
 
-
-let activeSessions = [
-  {
-    name : "Jupemon",
-    password : "secret",
-    id : null
-  }
-];
+let activeSessions= [
+]
 
 
 app.post('/createsession', jsonParser, (req, res) => { // creates a new session
@@ -55,8 +50,9 @@ app.post('/createsession', jsonParser, (req, res) => { // creates a new session
     res.json("data received")
   })
 
-  app.get('/suggest/:id', (req, res) => { 
+  app.get('/suggest/:id', (req, res) => {
     //activeSessions.find(req.params.id)
+    console.log("here is the current sessions", activeSessions)
     console.log(req.params.id, "HERERE PARAMS HERE")
     let session = activeSessions.find(o => o.name === req.params.id);
     console.log(session)
@@ -77,7 +73,9 @@ app.post('/createsession', jsonParser, (req, res) => { // creates a new session
 
 nextApp.prepare().then(() => {
 
-
+  app.get('/test', (req, res) => {
+    res.json("you working")
+  })
   
   app.get('*', (req, res) => {
     return nextHandler(req, res);
@@ -139,3 +137,7 @@ io.on('connection', function(socket) {
   })
 })
 */
+
+module.exports = {
+  activeSessions : activeSessions
+}

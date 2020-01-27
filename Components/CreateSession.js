@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import TopNav from './TopNav';
 
+function fetcher(url) { // used for fetching
+    return fetch(url).then(r => r.json());
+  }
+
 const buttonStyle = {
     color : "white",
 }
@@ -22,7 +26,6 @@ const h1Style = {
 }
 
 
-
 class CreateSession extends Component {
 
     constructor(props) {
@@ -32,6 +35,29 @@ class CreateSession extends Component {
             loading : false
          }
     }
+
+    fetcher = url => {
+        return fetch(url).then(r => r.json());
+    }
+
+    createTheSession = () => {
+        const name = document.querySelector('input').value
+        fetch(`/api/test?name=${name}`).then(r => {
+            if (r.status === 200) {
+                console.log("everything went well")
+            }
+            else if (r.status === 404) {
+                console.log("not found")
+            }
+            else {
+                console.log(r.status)
+                console.log("something horrible went wrong")
+            }
+        })
+        //const {data, error} = this.fetcher(`/api/test?${"name"}`)
+
+    }
+
     sendRequest = () => {
         const name = document.querySelector('input').value
         if (name.length > 0) {
@@ -60,7 +86,6 @@ class CreateSession extends Component {
 
     }
     render() { 
-
 
         return ( <div>
 
