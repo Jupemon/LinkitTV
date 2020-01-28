@@ -12,29 +12,26 @@ class YouTubeVideo extends React.PureComponent {
     showPlaceHolder : true,
     firstVideoPlayed : false,
     videoIndex : 0,
-    videoList : [],
-    VvideoList : [
-      {videoName : "Let it Go", videoUrl : "yLSD8SMfE4U"},
-      {videoName : "Funt to the top", videoUrl : "GYOsz7tjbsM"},
-      {videoName : "Concept of love", videoUrl : "ou-xCHFdG0c"}
-    ]
+    videoList : []
   }
 
   componentDidMount = () => {
     // On mount, check to see if the API script is already loaded
 
-    if (!window.YT) { // If not, load the script asynchronously
+    //if (!window.YT && 6==5) { // If not, load the script asynchronously
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
 
       // onYouTubeIframeAPIReady will load the video after the script is loaded
       window.onYouTubeIframeAPIReady = this.loadVideo;
-
+      console.log("loading async")
       const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      /*
     } else { // If script is already there, load the video directly
+      console.log("already loaded not asunc")
       this.loadVideo();
-    }
+    }*/
     /*
     document.querySelector("iframe").style.position = "absolute"
     document.querySelector("iframe").style.height = "100%"

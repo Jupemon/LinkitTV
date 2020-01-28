@@ -8,7 +8,6 @@ class TopNav extends Component {
             <h1 style={{marginTop:"0px"}}>Linkit TV</h1>
             <div className="session-info" style={{position : "absolute", top:"0", right:"0", marginRight:"15px"}}>
             <div>
-            <Link href="/session"><a style={{color:"white", padding:"0px 10px 0px 10px"}}>Create session</a></Link>
             {/*<Link href="/premium"><a style={{color:"gold"}}>Get Premium</a></Link>*/}
             </div>
             </div>

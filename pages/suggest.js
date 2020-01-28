@@ -23,6 +23,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      suggestionSent : false,
       loading : false,
       videoUrl : "",
       videoName : "",
@@ -31,7 +32,7 @@ export default class extends Component {
   }
 
 setVideoName = (name) => { // called on input change
-
+  this.setState({suggestionSent : false})
   if (name.length > 0 && name.length < 18) {
     this.setState({videoName : name})
   }
@@ -41,7 +42,7 @@ setVideoName = (name) => { // called on input change
 }
 
 setUrl = (url) => { // called on input change
-  
+  this.setState({suggestionSent : false})
   const validation = this.getYoutubeVideoId(url)
   
   console.log(validation)
@@ -79,13 +80,15 @@ getYoutubeVideoId = (ytlink) => { //checks if video is valid, returns the video 
     }
     ).then(d => d.json()).then(d => {
       console.log("data gotten here it is :", d)
-      this.setState({loading : false})
+      this.setState({loading : false, suggestionSent : true})
   })
   console.log(this.state)
   }
 
   validateForm = () => { // called when button is pressed, makes sure everything is valid before sending data
-    if (this.state.videoName && this.state.videoUrl) {
+    if (this.state.videoName && this.state.videoUrl && !this.state.suggestionSent) {
+      document.querySelectorAll("input")[0].value = "";
+      document.querySelectorAll("input")[1].value = ""
       this.sendSuggestion();
     }
   }
@@ -101,8 +104,8 @@ getYoutubeVideoId = (ytlink) => { //checks if video is valid, returns the video 
         <div>Youtube Video Link : <input style={{fontFamily: '"Comic Sans MS", cursive, sans-serif'}} type="text" onChange={(e) => {this.setUrl(e.currentTarget.value)}}/></div>
         {this.state.videoUrl.length > 0 ? null : <p style={{color:"red"}}>Not valid youtube video!</p>}
         {this.state.videoName.length > 0 ? null : <p style={{color:"red"}}>Video name too short</p>}
-        {this.state.loading ? <p style={{color:"yellow"}}>Loading...</p> : null}
-        <div onClick={() => {this.validateForm()}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = this.state.videoName && this.state.videoUrl ? "white" : "red"; e.currentTarget.style.color = "purple"}} onMouseOut={(e) => {e.currentTarget.style.backgroundColor = "purple"; e.currentTarget.style.color = "white"}} style={{width : "90px", marginRight :"50%", marginLeft:"50%", cursor : "pointer"}}>Suggest</div>
+        {this.state.suggestionSent ? <p style={{color:"green"}}>Suggestion Sent!</p> : null }
+        <div onClick={() => {this.validateForm()}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = this.state.videoName && this.state.videoUrl ? "white" : "red"; e.currentTarget.style.color = "purple"}} onMouseOut={(e) => {e.currentTarget.style.backgroundColor = "purple"; e.currentTarget.style.color = "white"}} style={{width : "90px", marginRight :"50%", marginLeft:"50%", cursor : "pointer"}}>{this.state.loading ? "Loading" : "Suggest"}</div>
         </div>
         
         
