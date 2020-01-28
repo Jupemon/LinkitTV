@@ -71,11 +71,10 @@ app.post('/createsession', jsonParser, (req, res) => { // creates a new session
     })
   })
 
+
 nextApp.prepare().then(() => {
 
-  app.get('/test', (req, res) => {
-    res.json("you working")
-  })
+
   
   app.get('*', (req, res) => {
     return nextHandler(req, res);

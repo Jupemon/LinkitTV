@@ -9,7 +9,6 @@ import TopNav from '../Components/TopNav'
 import LandingPage from '../Components/LandingPage'
 
 
-
 export default class extends Component {
 
   render() {
