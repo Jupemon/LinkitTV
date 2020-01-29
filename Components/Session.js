@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import io from 'socket.io-client'
 import VideoQueue from './VideoQueue';
 import YouTubeVideo from './Youtube';
 import PlaceHolder from './Placeholder';

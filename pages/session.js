@@ -7,6 +7,7 @@ import PlaceHolder from '../Components/Placeholder'
 import VideoQueue from '../Components/VideoQueue'
 import TopNav from '../Components/TopNav'
 import LandingPage from '../Components/LandingPage'
+import PageTransition from '../Components/PageTransition'
 
 
 
@@ -22,6 +23,7 @@ export default class extends Component {
   render() {
     return (
     <div style={{fontFamily: '"Comic Sans MS", cursive, sans-serif', color:"white", fontSize:"20px", marginTop:"150px" }}>
+
         {this.state.sessionCreated ? <div>
           <Session sessionName={this.state.sessionName}/>
         </div>:

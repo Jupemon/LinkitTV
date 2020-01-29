@@ -13,9 +13,16 @@ const jsonParser = bodyParser.json()//
 
 const port = parseInt(process.env.PORT, 10) || 3000//
 
+let index = 0;
 let activeSessions= [
-]
 
+];
+
+app.get('/test', (req,res) => {
+  console.log(activeSessions)
+  const allThesockets = Object.keys(io.sockets.sockets)
+  res.json({sessions : activeSessions, socketClients : allThesockets})
+})
 
 app.post('/createsession', jsonParser, (req, res) => { // creates a new session
   const { name } = req.body;
@@ -42,12 +49,23 @@ app.post('/createsession', jsonParser, (req, res) => { // creates a new session
 
 
   app.post('/suggestvideo', jsonParser, (req, res) => { // emit a video to the user
-    const {videoUrl, videoName, postId} = req.body
-    console.log(videoName, videoUrl, postId)
-    //this.socket.emit('link message', msg)
-    console.log(`${postId} video`)
-    io.emit(`${postId} video`, {videoName : videoName, videoUrl : videoUrl});
-    res.json("data received")
+      const {videoUrl, videoName, postId} = req.body
+      console.log(postId)
+      const session = activeSessions.find(s => {
+        return s.name === postId
+      })
+      console.log("this is what your looking for", session);
+      if (session === undefined) {
+        res.status(404).json("not found")
+      }
+      else {
+      //this.socket.emit('link message', msg)
+      console.log(`${postId} video`)
+      io.emit(`${postId} video`, {videoName : videoName, videoUrl : videoUrl});
+      res.status(200).json("data received and handled")
+      }
+
+
   })
 
   app.get('/suggest/:id', (req, res) => {
@@ -64,10 +82,22 @@ app.post('/createsession', jsonParser, (req, res) => { // creates a new session
     }
   })
 
-  io.on('connect', socket => {
+  io.on('connection', socket => {
+    console.log("socket id is this : ", socket.id)
+    activeSessions[index].socketId = socket.id
+    index++;
     console.log("user has connected to")
+    var userId;
     socket.on('disconnect', () => {
-      console.log("user has disconnceted")
+      console.log("disconnect id is here", socket.id)
+      activeSessions = activeSessions.filter(s => {
+        return s.socketId !== socket.id
+      })
+      index--;
+      console.log(activeSessions, "NEW ACTIVE SESSIONS ARE HERE")
+      
+
+      //console.log("the session to be closed is this one", closedSession);
     })
   })
 

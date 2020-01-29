@@ -41,7 +41,7 @@ class CreateSession extends Component {
     }
 
     createTheSession = () => {
-        const name = document.querySelector('input').value
+        const name = document.querySelector('input').value.toLowerCase()
         fetch(`/api/test?name=${name}`).then(r => {
             if (r.status === 200) {
                 console.log("everything went well")
@@ -59,7 +59,7 @@ class CreateSession extends Component {
     }
 
     sendRequest = () => {
-        const name = document.querySelector('input').value
+        const name = document.querySelector('input').value.toLowerCase()
         if (name.length > 0) {
 
             fetch('/createsession', {

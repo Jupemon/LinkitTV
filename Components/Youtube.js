@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import VideoQueue from './VideoQueue';
 import PlaceHolder from './Placeholder';
+import SessionInfo from './SessionInfo';
 
 class YouTubeVideo extends React.PureComponent {
   static propTypes = {
@@ -136,6 +137,7 @@ class YouTubeVideo extends React.PureComponent {
         <div id={`youtube-player-${id}`} />
         <PlaceHolder sessionName={this.props.sessionName} visibility={!this.state.showPlaceHolder}/>
         <VideoQueue videoIndex={this.state.videoIndex} selectVideo={this.selectVideo} videoList={this.state.videoList} updateVideoList={this.updateVideoList} sessionName={this.props.sessionName}/>
+        <SessionInfo sessionName={this.props.sessionName}/>
         </div>);
   };
 }

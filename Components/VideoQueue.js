@@ -11,7 +11,10 @@ class VideoQueue extends Component {
     componentDidMount() {
         console.log("component mounted frontend")
         this.socket = io();
-        console.log(`${this.props.sessionName} video`)
+        console.log(`${this.props.sessionName} video`) // send a connection
+
+        //this.socket.emit("new connection", this.props.sessionName); // new connection established
+
         this.socket.on(`${this.props.sessionName} video`, (msg) => {
             console.log(msg, "this was sent to you check ti out")
             const videoList =  this.props.videoList;
