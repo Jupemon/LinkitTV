@@ -5,13 +5,13 @@ const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
-nextApp.getRequestHandler()
 const nextHandler = nextApp.getRequestHandler();
+//nextApp.getRequestHandler()
 
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()//
 
-const port = parseInt(process.env.PORT, 10) || 3000//
+const port = process.env.PORT || 3000//
 
 let index = 0;
 let activeSessions= [
@@ -166,7 +166,3 @@ io.on('connection', function(socket) {
   })
 })
 */
-
-module.exports = {
-  activeSessions : activeSessions
-}
