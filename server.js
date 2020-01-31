@@ -1,4 +1,4 @@
-const app = require('express')()
+const app = require('express')();
 const server = require('http').Server(app)
 const io = require('socket.io')(server);
 const next = require('next')
@@ -82,24 +82,6 @@ app.post('/createsession', jsonParser, (req, res) => { // creates a new session
     }
   })
 
-  io.on('connection', socket => {
-    console.log("socket id is this : ", socket.id)
-    activeSessions[index].socketId = socket.id
-    index++;
-    console.log("user has connected to")
-    var userId;
-    socket.on('disconnect', () => {
-      console.log("disconnect id is here", socket.id)
-      activeSessions = activeSessions.filter(s => {
-        return s.socketId !== socket.id
-      })
-      index--;
-      console.log(activeSessions, "NEW ACTIVE SESSIONS ARE HERE")
-      
-
-      //console.log("the session to be closed is this one", closedSession);
-    })
-  })
 
 
 nextApp.prepare().then(() => {
@@ -116,7 +98,24 @@ nextApp.prepare().then(() => {
   })
 })
 
+io.on('connection', socket => {
+  console.log("socket id is this : ", socket.id)
+  activeSessions[index].socketId = socket.id
+  index++;
+  console.log("user has connected to")
+  var userId;
+  socket.on('disconnect', () => {
+    console.log("disconnect id is here", socket.id)
+    activeSessions = activeSessions.filter(s => {
+      return s.socketId !== socket.id
+    })
+    index--;
+    console.log(activeSessions, "NEW ACTIVE SESSIONS ARE HERE")
+    
 
+    //console.log("the session to be closed is this one", closedSession);
+  })
+})
 
 
 /*    io.on('connect', socket  => { // emit to the user that is selected
