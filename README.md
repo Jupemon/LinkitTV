@@ -3,6 +3,9 @@
 # Info
 The app allows stream viewers to interact with the streamer by sharing youtube videos with him/her
 
+## Blog post
+
+I wrote a blog post regarding this project : https://jupemon.blogspot.com/2020/02/steamer-and-audience-interaction-apps.html
 
 ## How it works
 
