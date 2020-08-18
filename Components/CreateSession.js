@@ -68,7 +68,7 @@ class CreateSession extends Component {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name : name
+                    name : name,
                 })
             }).then(d => {
                 if (d.status === 200) {
@@ -93,6 +93,10 @@ class CreateSession extends Component {
             
             <div style={divStyle}>Session Name : 
             <input style={{fontFamily: '"Comic Sans MS", cursive, sans-serif' }} type="text"/>
+            <div style={{marginTop :"20px"}}>
+            Add moderator
+            <input type="radio" />
+            </div>
             <p style={{color:"red"}}>{this.state.errorMessage}</p>
             <div onClick={() => {this.sendRequest()}} onMouseEnter={(e) => {e.currentTarget.style.backgroundColor = "white"; e.currentTarget.style.color = "purple"}} onMouseOut={(e) => {e.currentTarget.style.backgroundColor = "purple"; e.currentTarget.style.color = "white"}} style={{width : "70px", marginRight :"50%", marginLeft:"50%", cursor : "pointer"}}>Create Session</div>
             </div>

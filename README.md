@@ -1,46 +1,34 @@
-# Custom Express Server example
+# Linkit TV
 
-## How to use
+## The idea behind the project
 
-### Using `create-next-app`
+The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gave me a great idea. I decided to create an app where livestreamers could watch online videos together with their audience. A streamer can visit the site and share the generated URL with their fans. The Fans can send videos to be watched by the streamer. Think of it as an online TV screen where the remote can be shared with anyone on the internet.
 
-Execute [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+## How it works
 
-```bash
-npx create-next-app --example custom-server-express custom-server-express-app
-# or
-yarn create next-app --example custom-server-express custom-server-express-app
-```
+1. Open the LinkitTV site and start a new session. 
 
-### Download manually
+2. It Loads up an embedded youtube player
 
-Download the example:
+3. After loading the player it generates an URL link which you can share with anyone.
 
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/custom-server-express
-cd custom-server-express
-```
+4. Visiting this URL opens a site which asks for youtube video URLs.
 
-Install it and run:
+5. Link a youtube video URL to it.
 
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
+6. The embedded player starts playing the linked youtube video
 
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
+7. Any additional linked videos are added to a queue and autoplayed
 
-```bash
-now
-```
+## How i built it
 
-## The idea behind the example
+React and Node were a natural choice for the frontend/backend since I am very comfortable with them.
 
-Most of the times the default Next server will be enough but sometimes you want to run your own server to customize routes or other kind of the app behavior. Next provides a [Custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing) so you can customize as much as you want.
+I decided to use some Server side rendering with NEXTJS. This allowed me to conveniently combine the frontend and backend together. Rendering should also be faster because NEXTJS prerenders everything on the server. 
 
-Because the Next.js server is just a node.js module you can combine it with any other part of the node.js ecosystem. in this case we are using express to build a custom router on top of Next.
+I also needed a way for real time bidirectional communication between the server and client, SOCKET.IO helped me achieve this. 
 
-The example shows a server that serves the component living in `pages/a.js` when the route `/b` is requested and `pages/b.js` when the route `/a` is accessed. This is obviously a non-standard routing strategy. You can see how this custom routing is being made inside `server.js`.
+I also needed to choose an online video player. Youtube was the natural choice because of its popularity and massive video library. 
+
+The hardest part was hosting the project. NEXTJS has some major compatibility issues with HEROKU but i eventually got it working.
+
