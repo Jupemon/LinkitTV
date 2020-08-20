@@ -8,27 +8,26 @@ The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gav
 
 1. Open the LinkitTV site and start a new session. 
 
-2. It Loads up an embedded youtube player
+2. It Loads up an embedded youtube player.
 
 3. After loading the player it generates an URL link which you can share with anyone.
 
-4. Visiting this URL opens a site which asks for youtube video URLs.
+4. Visiting this URL opens a site which asks for youtube videos.
 
-5. Link a youtube video URL to it.
+5. Link a youtube video to it.
 
-6. The embedded player starts playing the linked youtube video
+6. The embedded player starts playing the linked youtube video.
 
-7. Any additional linked videos are added to a queue and autoplayed
+7. Any additional linked videos are added to a queue and autoplayed.
 
 ## How i built it
 
-React and Node were a natural choice for the frontend/backend since I am very comfortable with them.
+- React and Node(Express) were a natural choice for the frontend/backend since I am very comfortable with them.
 
-I decided to use some Server side rendering with NEXTJS. This allowed me to conveniently combine the frontend and backend together. Rendering should also be faster because NEXTJS prerenders everything on the server. 
+- I decided to use some Server side rendering with NEXTJS. This allowed me to conveniently combine the frontend and backend together. Rendering should also be faster because NEXTJS prerenders everything on the server. 
 
-I also needed a way for real time bidirectional communication between the server and client, SOCKET.IO helped me achieve this. 
+- I also needed a way for real time bidirectional communication between the server and client, SOCKET.IO helped me achieve this. 
 
-I also needed to choose an online video player. Youtube was the natural choice because of its popularity and massive video library. 
+- I also needed to choose an embedded video player which could play online videos. Youtube was the natural choice because of its popularity and massive video library.
 
-The hardest part was hosting the project. NEXTJS has some major compatibility issues with HEROKU but i eventually got it working.
-
+- The hardest part was hosting the project. NEXTJS has some major compatibility issues with HEROKU but i eventually got it working.
