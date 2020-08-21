@@ -2,7 +2,7 @@
 
 ## The idea behind the project
 
-The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gave me a great idea. I decided to create an app where livestreamers could watch online videos together with their audience. A streamer can visit the site and share the generated URL with their fans. The Fans can send videos to be watched by the streamer. Think of it as an online TV screen where the remote can be shared with anyone on the internet.
+The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gave me a great idea. I decided to create an app where livestreamers could watch online videos during a stream. A streamer can visit the site and share the generated URL link with their fans. The Fans can send videos to be watched by the livestreamer. Think of it as an online TV screen where you can share the remote with anyone on the internet.
 
 ## How it works
 
@@ -10,24 +10,27 @@ The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gav
 
 2. It Loads up an embedded youtube player.
 
-3. After loading the player it generates an URL link which you can share with anyone.
+3. After loading the player it generates an URL with an unique query string which you can share online.
 
-4. Visiting this URL opens a site which asks for youtube videos.
+4. People can you send youtube video links via the URL.
 
-5. Link a youtube video to it.
+5. The embedded player starts playing the linked youtube videos.
 
-6. The embedded player starts playing the linked youtube video.
+6. Any additional linked videos are added to a queue and autoplayed.
 
-7. Any additional linked videos are added to a queue and autoplayed.
 
-## How i built it
+## Tools / dependencies used
 
-- React and Node(Express) were a natural choice for the frontend/backend since I am very comfortable with them.
+- Created with **React** & **Node**
 
-- I decided to use some Server side rendering with NEXTJS. This allowed me to conveniently combine the frontend and backend together. Rendering should also be faster because NEXTJS prerenders everything on the server. 
+- **Express** used for creating the API.
 
-- I also needed a way for real time bidirectional communication between the server and client, SOCKET.IO helped me achieve this. 
+- **Bodyparser** Used for parsing HTTP request bodies.
 
-- I also needed to choose an embedded video player which could play online videos. Youtube was the natural choice because of its popularity and massive video library.
+- **NextJs** used for server side rendering. Rendering should be faster because NEXTJS prerenders everything on the server. With it i could also conveniently combine the frontend and backend together in the project. 
 
-- The hardest part was hosting the project. NEXTJS has some major compatibility issues with HEROKU but i eventually got it working.
+- **Socket.IO** used for real time bidirectional communication between the server and client. Basically it allows the server to initiate communication with frontend client after certain events happen.
+
+- **Youtube Iframe API** I also needed to choose an embedded player which could play online videos. Youtube was the natural choice because of its popularity and massive video library. Google also has great [Documentation](https://developers.google.com/youtube/iframe_api_reference) for it but it's all written in vanilla javascript, but i figured out how to use it with React components.
+
+- **Heroku** The hardest part was hosting the project. NEXTJS has some major configuration issues with HEROKU but i eventually got it working.
