@@ -27,10 +27,14 @@ The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gav
 
 - **Bodyparser** Used for parsing HTTP request bodies.
 
-- **NextJs** used for server side rendering. Rendering should be faster because NEXTJS prerenders everything on the server. With it i could also conveniently combine the frontend and backend together in the project. 
+- **NextJs** React framework which serves prerendered web pages. It allows combining frontend and backend into a single web project. Page rendering should also be faster becouse everything is prerendered on the server.
 
-- **Socket.IO** used for real time bidirectional communication between the server and client. Basically it allows the server to initiate communication with frontend client after certain events happen.
+- **Socket.IO** Used for real time bidirectional communication between the server and client. Allows the server to initiate communication with frontend client when certain events happen. Often used when building instant chat apps.
 
 - **Youtube Iframe API** I also needed to choose an embedded player which could play online videos. Youtube was the natural choice because of its popularity and massive video library. Google also has great [Documentation](https://developers.google.com/youtube/iframe_api_reference) for it but it's all written in vanilla javascript, but i figured out how to use it with React components.
 
 - **Heroku** The hardest part was hosting the project. NEXTJS has some major configuration issues with HEROKU but i eventually got it working.
+
+**Project Links**
+
+- [View project](linkit-tv.herokuapp.com/)
