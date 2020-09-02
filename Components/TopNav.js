@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link'
 
-class TopNav extends Component {
+class TopNav extends Component { // Renders the top navigation bar
     state = {  }
     render() { 
         return ( <div style={{position : "absolute", width : "100%", height : "10%", top : "0", left:"0", backgroundColor :"purple", borderBottom : "2px solid black", zIndex:"100"}}>

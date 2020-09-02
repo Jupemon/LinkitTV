@@ -1,15 +1,9 @@
-import Link from 'next/link'
-import Session from '../Components/Session'
-import CreateSession from '../Components/CreateSession'
 import { Component } from 'react'
-import YouTubeVideo from '../Components/Youtube'
-import PlaceHolder from '../Components/Placeholder'
-import VideoQueue from '../Components/VideoQueue'
 import TopNav from '../Components/TopNav'
 import LandingPage from '../Components/LandingPage'
 
 
-export default class extends Component {
+export default class extends Component { // Renders the landing page
 
   render() {
     return (

@@ -7,11 +7,10 @@ import PlaceHolder from '../Components/Placeholder'
 import VideoQueue from '../Components/VideoQueue'
 import TopNav from '../Components/TopNav'
 import LandingPage from '../Components/LandingPage'
-import PageTransition from '../Components/PageTransition'
 
 
 
-export default class extends Component {
+export default class extends Component { // Shows create session page if one has not been created
   state={
     sessionCreated : false,
     sessionName : ""
@@ -24,25 +23,16 @@ export default class extends Component {
     return (
     <div style={{fontFamily: '"Comic Sans MS", cursive, sans-serif', color:"white", fontSize:"20px", marginTop:"150px" }}>
 
-        {this.state.sessionCreated ? <div>
-          <Session sessionName={this.state.sessionName}/>
-        </div>:
+        {this.state.sessionCreated ? 
         <div>
-        <TopNav />
+          <Session sessionName={this.state.sessionName}/>
+        </div>
+        :
+        <div>
+          <TopNav />
           <CreateSession sessionCreated={this.sessionCreated}/>
         </div>
         }
       </div>)
   }
 }
-
-/*     return (<div style={{fontFamily: '"Comic Sans MS", cursive, sans-serif' }}>
-        {this.state.sessionCreated ? <div>
-          <Session sessionName={this.state.sessionName}/>
-        </div>:
-        <div>
-        <TopNav />
-          <CreateSession sessionCreated={this.sessionCreated}/>
-        </div>
-        }
-      </div>)*/

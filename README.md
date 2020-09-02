@@ -38,3 +38,6 @@ The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gav
 **Project Links**
 
 - [View project](linkit-tv.herokuapp.com/)
+
+
+- I am rebuilding the project with Typescript and cleaning the code [HERE](https://github.com/Jupemon/LinkitTV-TS.git)
