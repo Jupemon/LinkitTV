@@ -1,3 +1,8 @@
+## Outdated project
+
+- I recreated this project with typescript and cleaner code [HERE](https://github.com/Jupemon/LinkitTV-TS.git)
+
+
 # Linkit TV
 
 ## The idea behind the project
@@ -27,17 +32,14 @@ The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gav
 
 - **Bodyparser** Used for parsing HTTP request bodies.
 
-- **NextJs** React framework which serves prerendered web pages. It allows combining frontend and backend into a single web project. Page rendering should also be faster becouse everything is prerendered on the server.
+- **NextJs** React framework which serves prerendered web pages and renders all React components on the server. It allows combining frontend and backend into a single web project.
 
 - **Socket.IO** Used for real time bidirectional communication between the server and client. Allows the server to initiate communication with frontend client when certain events happen. Often used when building instant chat apps.
 
-- **Youtube Iframe API** I also needed to choose an embedded player which could play online videos. Youtube was the natural choice because of its popularity and massive video library. Google also has great [Documentation](https://developers.google.com/youtube/iframe_api_reference) for it but it's all written in vanilla javascript, but i figured out how to use it with React components.
+- **Youtube Iframe API** I also needed to choose an embedded player which could play online videos. Youtube was the natural choice because of its popularity and massive video library. Google also has great [Documentation](https://developers.google.com/youtube/iframe_api_reference). It took me a while to figure out how to get it working with React components.
 
 - **Heroku** The hardest part was hosting the project. NEXTJS has some major configuration issues with HEROKU but i eventually got it working.
 
 **Project Links**
 
 - [View project](linkit-tv.herokuapp.com/)
-
-
-- I am rebuilding the project with Typescript and cleaning the code [HERE](https://github.com/Jupemon/LinkitTV-TS.git)
