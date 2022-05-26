@@ -42,4 +42,4 @@ The rise of [Reaction Content](https://en.wikipedia.org/wiki/Reaction_video) gav
 
 **Project Links**
 
-- [View project](linkit-tv.herokuapp.com/)
+- [View project](https://linkit-tv-ts.herokuapp.com/)
